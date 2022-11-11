@@ -10,6 +10,7 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 })
 export class SignupComponent implements OnInit {
   user: RegisterDto = {
+    id: '',
     userName: '',
     email: '',
     name: '',
