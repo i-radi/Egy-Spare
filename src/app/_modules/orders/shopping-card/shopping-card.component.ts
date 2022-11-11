@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/_models/product';
 import { ShoppingCardService } from 'src/app/_services/shopping-card.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-shopping-card',
@@ -46,7 +47,7 @@ export class ShoppingCardComponent implements OnInit {
 
   Mins(id: string) {
     console.log(id);
-    this.Cartservice.decrementNo(id).subscribe((m) => {
+    this.Cartservice.decrementCount(id).subscribe((m) => {
       this.GetCartItem();
       this.getcarttotal('-');
     });
@@ -54,7 +55,7 @@ export class ShoppingCardComponent implements OnInit {
 
   plus(id: string) {
     console.log(id);
-    this.Cartservice.incremrntNo(id).subscribe((P) => {
+    this.Cartservice.incrementCount(id).subscribe((P) => {
       this.GetCartItem();
       this.getcarttotal('+');
     });
@@ -70,5 +71,12 @@ export class ShoppingCardComponent implements OnInit {
 
   ngOnInit() {
     this.GetCartItem();
+  }
+  alert() {
+    Swal.fire(
+      'Thank You',
+      'We Repair Your Product And Contact With You..',
+      'success'
+    );
   }
 }

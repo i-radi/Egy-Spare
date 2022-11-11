@@ -4,6 +4,7 @@ import { Brand } from 'src/app/_models/brand';
 import { Category } from 'src/app/_models/category';
 import { Product } from 'src/app/_models/product';
 import { VendorService } from 'src/app/_services/vendor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vendor',
@@ -46,4 +47,7 @@ export class VendorComponent implements OnInit {
   }
 
   ngOnInit() {}
+  DoneAlert() {
+    Swal.fire('Good job!', 'You Product Is Added', 'success');
+  }
 }
