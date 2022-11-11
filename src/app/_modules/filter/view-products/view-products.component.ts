@@ -57,7 +57,8 @@ export class ViewProductsComponent implements OnInit {
       console.log(this.dummyId2);
       this.productService.GetProductByBrand(this.dummyId2).subscribe((prod) => {
         this.products = prod;
-        console.log(this.products);
+        console.log(prod);
+        //console.log(this.products);
       });
     });
 
@@ -77,4 +78,8 @@ export class ViewProductsComponent implements OnInit {
       this.brands = a;
     });
   }
+  // ngOnChanges() {
+  //   this.change(this.dummyId2);
+  //   console.log(this.products);
+  // }
 }

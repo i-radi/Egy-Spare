@@ -21,7 +21,7 @@ export class ProductService {
 
   GetProductByBrand(id: number) {
     return this.http.get<Product[]>(
-      `${this.path}withCategory?brandId=${id}&pageNumber=2&productsPerPage=10`
+      `${this.path}withBrand?brandId=${id}&pageNumber=2&productsPerPage=10`
     );
   }
 

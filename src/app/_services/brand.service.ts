@@ -11,22 +11,22 @@ export class BrandService {
   constructor(public http: HttpClient) {}
 
   GetAll() {
-    return this.http.get<Brand[]>(`${this.path}Brands`);
+    return this.http.get<Brand[]>(`${this.path}Brands/`);
   }
 
   getBrandById(id: number) {
-    return this.http.get<Brand>(`${this.path}Brands` + id);
+    return this.http.get<Brand>(`${this.path}Brands/` + id);
   }
 
   addBrand(brand: Brand) {
-    return this.http.post(`${this.path}Brands`, brand);
+    return this.http.post(`${this.path}Brands/`, brand);
   }
 
   deleteBrandById(id: number) {
-    return this.http.delete(`${this.path}Brands` + id);
+    return this.http.delete(`${this.path}Brands/` + id);
   }
 
   updateBrand(brand: Brand) {
-    return this.http.put<Brand>(`${this.path}Brands` + brand.id, brand);
+    return this.http.put<Brand>(`${this.path}Brands/` + brand.id, brand);
   }
 }

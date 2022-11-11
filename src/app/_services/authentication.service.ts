@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,7 @@ import { RegisterDto } from '../_models/register-dto';
 })
 export class AuthenticationService {
   private path = environment.apiUrl;
+  userr: RegisterDto[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -24,6 +25,37 @@ export class AuthenticationService {
   LogOut(): void {
     localStorage.removeItem('user');
   }
+
+  baseurl = 'https://localhost:7029/api/Users';
+
+  getallusers() {
+    let token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQG1haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImFsaSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOTk5MjM4ZGMtMTM5My00ZDY3LWFlNGYtMDhkYWMxZDU1ZWEzIiwiZXhwIjoxNjcxOTg4OTc1LCJpc3MiOiJTZWN1cmVBcGkiLCJhdWQiOiJTZWN1cmVBcGlVc2VyIn0.IFgqwY_5EEpqN32sJ-9EPixCNFtUzqEA9Sf7IgCysAo';
+    let headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
+    return this.http.get<RegisterDto[]>(this.baseurl, {
+      headers: headers_object,
+    });
+  }
+
+  deleteuserbyid(id: any) {
+    let token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkbWluQG1haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6ImFsaSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOTk5MjM4ZGMtMTM5My00ZDY3LWFlNGYtMDhkYWMxZDU1ZWEzIiwiZXhwIjoxNjcxOTg4OTc1LCJpc3MiOiJTZWN1cmVBcGkiLCJhdWQiOiJTZWN1cmVBcGlVc2VyIn0.IFgqwY_5EEpqN32sJ-9EPixCNFtUzqEA9Sf7IgCysAo';
+    let headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
+    return this.http.delete(this.baseurl + '?userId=' + id, {
+      headers: headers_object,
+    });
+  }
+
+  // changeSetting(set:Setting)
+  // {
+  //      return this.http.put<any>("https://localhost:7029/api/Users?id="+set.id,set)
+  // }
 }
 //   userData: any = new BehaviorSubject(null);
 //   role: any = new BehaviorSubject(null);

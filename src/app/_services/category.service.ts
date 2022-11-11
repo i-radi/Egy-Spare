@@ -11,24 +11,24 @@ export class CategoryService {
   constructor(public http: HttpClient) {}
 
   GetAll() {
-    return this.http.get<Category[]>(`${this.path}Categories`);
+    return this.http.get<Category[]>(`${this.path}Categories/`);
   }
 
   getCategoryById(id: number) {
-    return this.http.get<Category>(`${this.path}Categories` + id);
+    return this.http.get<Category>(`${this.path}Categories/` + id);
   }
 
   addCategory(category: Category) {
-    return this.http.post(`${this.path}Categories`, category);
+    return this.http.post(`${this.path}Categories/`, category);
   }
 
   deleteCategoryById(id: number) {
-    return this.http.delete(`${this.path}Categories` + id);
+    return this.http.delete(`${this.path}Categories/` + id);
   }
 
   updateCategory(category: Category) {
     return this.http.put<Category>(
-      `${this.path}Categories` + category.id,
+      `${this.path}Categories/` + category.id,
       category
     );
   }
