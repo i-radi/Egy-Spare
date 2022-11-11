@@ -1,0 +1,58 @@
+<section class="singupPage my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6">
+        <div class="aline">
+          <img src="../../../assets/singImg.png" />
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="aline">
+          <h1 class="singupword">Sign Up</h1>
+          <div>
+            <p class="inputsword">Name</p>
+            <input class="inputs" type="text" [(ngModel)]="user.Name" />
+          </div>
+          <p class="inputsword">UserName</p>
+          <input class="inputs" type="text" [(ngModel)]="user.UserName" />
+
+          <p class="inputsword">Email</p>
+          <input class="inputs" type="text" [(ngModel)]="user.Email" />
+
+          <p class="inputsword">Password</p>
+          <input class="inputs" type="password" [(ngModel)]="user.Password" />
+
+          <p class="inputsword">Confirm Password</p>
+          <input
+            class="inputs"
+            type="password"
+            [(ngModel)]="user.ConfirmPassword"
+          />
+
+          <p class="inputsword">Phone Number</p>
+          <input class="inputs" type="text" [(ngModel)]="user.PhoneNumber" />
+
+          <p class="inputsword">Role</p>
+          <select class="inputs" [(ngModel)]="user.role">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option></select
+          ><br />
+
+          <button class="spaces Add_button" (click)="add()">
+            Creat An Account
+          </button>
+          <h5>
+            Have already an account?
+            <a routerLink="/login" class="logWord">Log in</a>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- <select #bb (click)="fun(bb)">
+  <option>nour</option>
+  <option>mohamed</option>
+   <option>abdelaty </option>
+</select><br><br> -->
