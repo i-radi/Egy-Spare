@@ -26,8 +26,15 @@ export class ShoppingCardService {
   }
 
   removeproduct(id: string) {
+    let token: string = localStorage.getItem('token')!;
+    var headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
     );
-}
+    return this.http.delete<any>(`${this.path}?productId=` + id, {
+      headers: headers_object,
+    });
+  }
 
   decrementCount(id: string) {
     let token: string = localStorage.getItem('token')!;

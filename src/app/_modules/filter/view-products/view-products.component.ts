@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/_models/brand';
 import { Card } from 'src/app/_models/card';
 import { Category } from 'src/app/_models/category';
@@ -22,7 +23,8 @@ export class ViewProductsComponent implements OnInit {
     public categoryService: CategoryService,
     public brandService: BrandService,
     public UserService: AuthenticationService,
-    public cardService: ShoppingCardService
+    public cardService: ShoppingCardService,
+    public router:Router
   ) {}
 
   newProduct: Product = {
@@ -89,13 +91,19 @@ export class ViewProductsComponent implements OnInit {
   //   console.log(this.products);
   // }
 
+viewinfo(item:Product){
+  console.log(item);
+  this.productService.GetProductById(item.id).subscribe((a) => {
+    this.router.navigateByUrl("/ProductDetails")
+  })
+}
+
   addCard(cardId: string) {
     console.log(cardId);
     this.productService.GetProductById(cardId).subscribe((a) => {
       this.card.count = a.count;
       this.card.productId = a.id;
-      localStorage.getItem(this.card.userId);
-      console.log(a);
+     var TT = localStorage.getItem("token");
     });
   }
 }

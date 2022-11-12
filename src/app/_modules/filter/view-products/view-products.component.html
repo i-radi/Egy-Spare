@@ -48,7 +48,8 @@
               <h5 class="card-title title-desc">{{ item.name }}</h5>
               <p class="card-text txt-price">{{ item.price }}</p>
               <a
-                href="./product_details.html"
+              (click)="viewinfo(item)"
+                
                 class="btn btn-primary btn-custom1"
                 >view info</a
               >
