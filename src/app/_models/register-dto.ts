@@ -1,5 +1,5 @@
 export interface RegisterDto {
-  id: string;
+  id: any;
   name: string;
   userName: string;
   email: string;

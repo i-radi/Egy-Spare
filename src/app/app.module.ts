@@ -10,10 +10,23 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './_modules/shared/shared.module';
 import { UserModule } from './_modules/user/user.module';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VendorComponent } from './_modules/orders/vendor/vendor.component';
+import { AdminNavComponent } from './_modules/core/admin-nav/admin-nav.component';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { CategoriesModule } from './_modules/categories/categories.module';
+import { ProductModule } from './_modules/product/product.module';
+import { BrandsModule } from './_modules/brands/brands.module';
+import { OrdersModule } from './_modules/orders/orders.module';
+// // import { CategoriesUpdateComponent } from './_modules/categories/categories-update/categories-update.component';
+// // import { CategoriesCreateComponent } from './_modules/categories/categories-create/categories-create.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    AdminNavComponent,
+    // CategoriesCreateComponent,
+  ],
   imports: [
     FontAwesomeModule,
     BrowserModule,
@@ -25,6 +38,12 @@ import { UserModule } from './_modules/user/user.module';
     BrowserAnimationsModule,
     SharedModule,
     UserModule,
+    MatListModule,
+    MatSidenavModule,
+    CategoriesModule,
+    ProductModule,
+    BrandsModule,
+    OrdersModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

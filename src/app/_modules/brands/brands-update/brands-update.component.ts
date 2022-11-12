@@ -9,7 +9,7 @@ import { BrandService } from 'src/app/_services/brand.service';
   styleUrls: ['./brands-update.component.css'],
 })
 export class BrandsUpdateComponent implements OnInit {
-  brand: Brand = new Brand(0, '', '');
+  brand: Brand = { id: 0, name: '', imgPath: '' };
   id: number = 0;
   constructor(
     public brandser: BrandService,
@@ -18,7 +18,7 @@ export class BrandsUpdateComponent implements OnInit {
   ) {}
 
   save() {
-    this.brandser.updatebrand(this.brand).subscribe((a) => {
+    this.brandser.updateBrand(this.brand).subscribe((a) => {
       console.log(a), this.router.navigateByUrl('/admin/brand/list');
     });
   }

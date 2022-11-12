@@ -30,7 +30,7 @@ export class ProductUpdateComponent implements OnInit {
   ) {}
 
   save() {
-    this.prodser.updategategory(this.pro).subscribe((a) => {
+    this.prodser.updateCategory(this.pro).subscribe((a) => {
       console.log(a), this.router.navigateByUrl('/admin/product/list');
     });
   }
@@ -42,7 +42,7 @@ export class ProductUpdateComponent implements OnInit {
   ngOnInit() {
     this.ar.params.subscribe((a) => {
       let name = a['name'];
-      this.prodser.getproductbyname(name).subscribe((c) => {
+      this.prodser.getProductByName(name).subscribe((c) => {
         this.pro = c;
       });
     });

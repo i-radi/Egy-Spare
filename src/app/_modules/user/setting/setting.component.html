@@ -10,13 +10,14 @@
       </div>
   </div> -->
   <div class="py-2">
-    <!-- <div class="row py-2">
+    <div class="row py-2">
       <div class="col-md-12 my-1">
         <label for="firstname">Name</label>
+        <input type="text" hidden [(ngModel)]="set.id" />
         <input
           type="text"
           class="bg-light form-control mt-1"
-          placeholder="Steve"
+          placeholder="Nader"
           [(ngModel)]="set.name"
         />
       </div>
@@ -25,7 +26,7 @@
         <input
           type="text"
           class="bg-light form-control mt-1"
-          placeholder="Smith"
+          placeholder="Ezzat"
           [(ngModel)]="set.userName"
         />
       </div>
@@ -36,7 +37,7 @@
         <input
           type="text"
           class="bg-light form-control mt-1"
-          placeholder="steve_@email.com"
+          placeholder="Nader@email.com"
           [(ngModel)]="set.email"
         />
       </div>
@@ -45,32 +46,23 @@
         <input
           type="tel"
           class="bg-light form-control mt-1"
-          placeholder="+1 213-548-6015"
+          placeholder="01003179394"
           [(ngModel)]="set.phoneNumber"
         />
-      </div> -->
-  </div>
-  <!-- <div class="row py-2">
-
-          <div class="col-md-6 pt-md-0 pt-3" id="lang">
-              <label for="language">Language</label>
-              <div class="arrow">
-                  <select name="language" id="language" class="bg-light">
-                      <option value="english" selected>English</option>
-                      <option value="english_us">English (United States)</option>
-                      <option value="enguk">English UK</option>
-                      <option value="arab">Arabic</option>
-                  </select>
-              </div>
-          </div>
-      </div> -->
-  <div class="py-3 pb-4 border-bottom my-1">
-    <button class="btn mr-3 ml-1 size_bnt_login Add_button" (click)="change()">
-      Save Changes
-    </button>
-    <!-- <button class="btn border button">Cancel</button> -->
-  </div>
-  <!-- <div class="d-sm-flex align-items-center pt-3" id="deactivate">
+      </div>
+    </div>
+    <!-- <ng-container *ngFor="let item of set"> -->
+    <div class="py-3 pb-4 border-bottom my-1">
+      <button
+        class="btn mr-3 ml-1 size_bnt_login Add_button"
+        (click)="change()"
+      >
+        Save Changes
+      </button>
+      <!-- <button class="btn border button">Cancel</button> -->
+    </div>
+    <!-- </ng-container> -->
+    <!-- <div class="d-sm-flex align-items-center pt-3" id="deactivate">
           <div>
               <b>Deactivate your account</b>
               <p>Details about your company account and password</p>
@@ -79,4 +71,5 @@
               <button class="btn Add_button">Deactivate</button>
           </div>
       </div> -->
+  </div>
 </div>

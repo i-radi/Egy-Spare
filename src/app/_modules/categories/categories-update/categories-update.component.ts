@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/_models/category';
-import { CetegoryService } from 'src/app/services/cetegory.service';
+import { CategoryService } from 'src/app/_services/category.service';
 
 @Component({
   selector: 'app-categories-update',
@@ -9,16 +9,16 @@ import { CetegoryService } from 'src/app/services/cetegory.service';
   styleUrls: ['./categories-update.component.css'],
 })
 export class CategoriesUpdateComponent implements OnInit {
-  cat: Category = new Category(0, '', '');
+  cat: Category = { id: 0, name: '', imgPath: '' };
   id: number = 0;
   constructor(
-    public catser: CetegoryService,
+    public catser: CategoryService,
     public router: Router,
     public ar: ActivatedRoute
   ) {}
 
   save() {
-    this.catser.updategategory(this.cat).subscribe((a) => {
+    this.catser.updateCategory(this.cat).subscribe((a) => {
       console.log(a), this.router.navigateByUrl('/categories');
     });
   }
@@ -30,7 +30,7 @@ export class CategoriesUpdateComponent implements OnInit {
   ngOnInit() {
     this.ar.params.subscribe((a) => {
       let id = a['id'];
-      this.catser.GetCaetgoryId(id).subscribe((c) => {
+      this.catser.getCategoryById(id).subscribe((c) => {
         this.cat = c;
       });
     });

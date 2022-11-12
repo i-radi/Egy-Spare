@@ -19,7 +19,7 @@ export class BrandsListComponent implements OnInit {
 
   delete(id: number) {
     if (confirm('are you sure') == true) {
-      this.brandser.deletebrandbyid(id).subscribe((a) => {
+      this.brandser.deleteBrandById(id).subscribe((a) => {
         this.brandser.GetAll().subscribe((c) => {
           this.brand = c;
         });

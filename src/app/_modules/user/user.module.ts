@@ -8,8 +8,18 @@ import { SettingComponent } from './setting/setting.component';
 import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
-  declarations: [LoginComponent, SignupComponent, SettingComponent, UserListComponent],
+  declarations: [
+    LoginComponent,
+    SignupComponent,
+    SettingComponent,
+    UserListComponent,
+  ],
   imports: [CommonModule, FormsModule, RouterModule],
-  exports: [LoginComponent, SignupComponent],
+  exports: [
+    LoginComponent,
+    SignupComponent,
+    UserListComponent,
+    SettingComponent,
+  ],
 })
 export class UserModule {}

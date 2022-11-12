@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    RouterModule,
   ],
   exports: [
     AdminNavComponent,
@@ -26,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    RouterModule,
   ],
 })
 export class CoreModule {}

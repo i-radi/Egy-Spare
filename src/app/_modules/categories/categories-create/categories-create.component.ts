@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/_models/category';
-import { CetegoryService } from 'src/app/services/cetegory.service';
+import { CategoryService } from 'src/app/_services/category.service';
 
 @Component({
   selector: 'app-categories-create',
@@ -9,12 +9,14 @@ import { CetegoryService } from 'src/app/services/cetegory.service';
   styleUrls: ['./categories-create.component.css'],
 })
 export class CategoriesCreateComponent implements OnInit {
-  ncat: Category = new Category(0, '', '');
+  ncat: Category = { id: 0, name: '', imgPath: '' };
 
-  constructor(public catser: CetegoryService, public router: Router) {}
+  // npro:Category ={id:0,name:"",brandId:0,categoryId:0,imgPath:"",price:0}
+
+  constructor(public catser: CategoryService, public router: Router) {}
 
   save() {
-    this.catser.addcategory(this.ncat).subscribe((a) => {
+    this.catser.addCategory(this.ncat).subscribe((a) => {
       console.log(a);
       this.router.navigateByUrl('/categories');
     });

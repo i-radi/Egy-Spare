@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginDto } from 'src/app/_models/login-dto';
 import { TokenDto } from 'src/app/_models/token';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
@@ -14,13 +15,13 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  constructor(public service: AuthenticationService) {}
+  constructor(public service: AuthenticationService, public router: Router) {}
 
   login() {
-    this.service.login(this.user)
-    .subscribe((response: TokenDto) => {
+    this.service.login(this.user).subscribe((response: TokenDto) => {
       console.log(response);
       localStorage.setItem('token', response.token);
+      this.router.navigateByUrl('/home');
     });
   }
 

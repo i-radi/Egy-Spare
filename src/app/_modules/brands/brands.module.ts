@@ -5,6 +5,7 @@ import { BrandsDetailsComponent } from './brands-details/brands-details.componen
 import { BrandsListComponent } from './brands-list/brands-list.component';
 import { BrandsUpdateComponent } from './brands-update/brands-update.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     BrandsListComponent,
     BrandsUpdateComponent,
   ],
-  imports: [CommonModule, FormsModule],
-  exports: [],
+  imports: [CommonModule, FormsModule, RouterModule],
+  exports: [RouterModule],
 })
 export class BrandsModule {}

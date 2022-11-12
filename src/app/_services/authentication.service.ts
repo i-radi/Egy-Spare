@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginDto } from '../_models/login-dto';
 import { RegisterDto } from '../_models/register-dto';
+import { Setting } from '../_models/setting';
 
 @Injectable({
   providedIn: 'root',
@@ -52,19 +53,29 @@ export class AuthenticationService {
     });
   }
 
-  // changeSetting(set:Setting)
-  // {
-  //      return this.http.put<any>("https://localhost:7029/api/Users?id="+set.id,set)
-  // }
+  getuser() {
+    //token
+    return this.http.get<any>('url');
+  }
+
+  AddUser(ur: RegisterDto) {
+    return this.http.post(`${this.path}Users/register`, ur);
+  }
+
+  changeSetting(set: Setting) {
+    return this.http.put<any>(
+      'https://localhost:7029/api/Users/' + set.id,
+      set
+    );
+  }
 }
+
 //   userData: any = new BehaviorSubject(null);
 //   role: any = new BehaviorSubject(null);
 //   private path = environment.apiUrl;
 //   constructor(public http: HttpClient, private _Router: Router) {}
 
-//   AddUser(ur: User) {
-//     return this.http.post(`${this.path}Users/register`, ur);
-//   }
+//
 //   login(ur: UserLog) {
 //     return this.http.post(`${this.path}Users/login`, ur);
 //   }

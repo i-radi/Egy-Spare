@@ -5,6 +5,7 @@ import { CategoriesDetailsComponent } from './categories-details/categories-deta
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoriesUpdateComponent } from './categories-update/categories-update.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     CategoriesListComponent,
     CategoriesUpdateComponent,
   ],
-  imports: [CommonModule, FormsModule],
-  exports: [],
+  imports: [CommonModule, FormsModule, RouterModule],
+  exports: [RouterModule],
 })
 export class CategoriesModule {}
