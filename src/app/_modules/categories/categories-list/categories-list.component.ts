@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/_models/category';
-import { CetegoryService } from 'src/app/services/cetegory.service';
+import { CategoryService } from 'src/app/_services/category.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -10,7 +10,7 @@ import { CetegoryService } from 'src/app/services/cetegory.service';
 })
 export class CategoriesListComponent implements OnInit {
   cat: Category[] = [];
-  constructor(public catser: CetegoryService, public router: Router) {}
+  constructor(public catser: CategoryService, public router: Router) {}
 
   gotocreate() {
     this.router.navigateByUrl('categories/create');
@@ -18,7 +18,7 @@ export class CategoriesListComponent implements OnInit {
 
   deleteCategory(id: number) {
     if (confirm('are you sure') == true) {
-      this.catser.deletecategorybyid(id).subscribe((a) => {
+      this.catser.deleteCategoryById(id).subscribe((a) => {
         this.catser.GetAll().subscribe((c) => {
           this.cat = c;
         });

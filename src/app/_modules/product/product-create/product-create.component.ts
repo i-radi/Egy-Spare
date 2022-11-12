@@ -4,7 +4,7 @@ import { Brand } from 'src/app/_models/brand';
 import { Category } from 'src/app/_models/category';
 import { Product } from 'src/app/_models/product';
 import { BrandService } from 'src/app/_services/brand.service';
-import { CetegoryService } from 'src/app/services/cetegory.service';
+import { CategoryService } from 'src/app/_services/category.service';
 import { ProductService } from 'src/app/_services/product.service';
 
 @Component({
@@ -30,14 +30,14 @@ export class ProductCreateComponent implements OnInit {
   ncat: Category[] = [];
 
   constructor(
-    public catser: CetegoryService,
+    public catser: CategoryService,
     public brandser: BrandService,
     public proser: ProductService,
     public router: Router
   ) {}
 
   save() {
-    this.proser.addproduct(this.npro).subscribe((a) => {
+    this.proser.addProduct(this.npro).subscribe((a) => {
       console.log(a), this.router.navigateByUrl('/admin/product/list');
     });
   }

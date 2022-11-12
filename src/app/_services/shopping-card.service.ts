@@ -17,29 +17,45 @@ export class ShoppingCardService {
 
   getProduct() {
     let token: string = localStorage.getItem('token')!;
-    var headers_object = new HttpHeaders().set('Authorization', token);
+
+    var headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
     return this.http.get<any[]>(this.path, { headers: headers_object });
   }
 
   removeproduct(id: string) {
-    let token: string = localStorage.getItem('token')!;
-    var headers_object = new HttpHeaders().set('Authorization', token);
-    return this.http.delete<any[]>(this.path + id, { headers: headers_object });
-  }
+    );
+}
 
   decrementCount(id: string) {
     let token: string = localStorage.getItem('token')!;
-    var headers_object = new HttpHeaders().set('Authorization', token);
-    return this.http.put<any>(`${this.path}DecrementCount/` + id, null, {
-      headers: headers_object,
-    });
+    var headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
+    return this.http.put<any>(
+      `${this.path}DecrementCount?productId=` + id,
+      null,
+      {
+        headers: headers_object,
+      }
+    );
   }
 
   incrementCount(id: string) {
     let token: string = localStorage.getItem('token')!;
-    var headers_object = new HttpHeaders().set('Authorization', token);
-    return this.http.put<any>(`${this.path}IncrementCount/` + id, null, {
-      headers: headers_object,
-    });
+    var headers_object = new HttpHeaders().set(
+      'Authorization',
+      'Bearer ' + token
+    );
+    return this.http.put<any>(
+      `${this.path}IncrementCount?productId=` + id,
+      null,
+      {
+        headers: headers_object,
+      }
+    );
   }
 }

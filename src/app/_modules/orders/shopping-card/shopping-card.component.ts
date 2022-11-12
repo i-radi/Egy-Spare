@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/_models/product';
 import { ShoppingCardService } from 'src/app/_services/shopping-card.service';
 import Swal from 'sweetalert2';
@@ -13,6 +14,7 @@ export class ShoppingCardComponent implements OnInit {
   //products: Product[] = [];
   thetotal: number = 0;
   public products: any[] = [];
+  flag: boolean = false;
   dummyId: string = '';
   No: number = 0;
   product: Product = {
@@ -27,7 +29,7 @@ export class ShoppingCardComponent implements OnInit {
     brandId: 0,
     categoryId: 0,
   };
-  constructor(public Cartservice: ShoppingCardService) {}
+  constructor(public Cartservice: ShoppingCardService, public router: Router) {}
 
   GetCartItem() {
     this.Cartservice.getProduct().subscribe((res) => {
@@ -78,5 +80,6 @@ export class ShoppingCardComponent implements OnInit {
       'We Repair Your Product And Contact With You..',
       'success'
     );
+    this.router.navigateByUrl('/home');
   }
 }

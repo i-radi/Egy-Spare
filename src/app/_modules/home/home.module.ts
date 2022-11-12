@@ -8,6 +8,7 @@ import { ProductComponent } from './product/product.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ViewProductsComponent } from '../filter/view-products/view-products.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     ProductComponent,
@@ -15,7 +16,13 @@ import { ViewProductsComponent } from '../filter/view-products/view-products.com
     CategoryListComponent,
     HomePageComponent,
   ],
-  imports: [CommonModule, FormsModule, HttpClientModule, FilterModule],
-  exports: [HomePageComponent, ViewProductsComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    FilterModule,
+    RouterModule,
+  ],
+  exports: [HomePageComponent, ViewProductsComponent, RouterModule],
 })
 export class HomeModule {}

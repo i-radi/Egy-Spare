@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Card } from '../_models/card';
 import { Product } from '../_models/product';
 
 @Injectable({
@@ -21,7 +22,7 @@ export class ProductService {
 
   GetProductByBrand(id: number) {
     return this.http.get<Product[]>(
-      `${this.path}withCategory?brandId=${id}&pageNumber=2&productsPerPage=10`
+      `${this.path}withBrand?brandId=${id}&pageNumber=2&productsPerPage=10`
     );
   }
 
@@ -60,5 +61,12 @@ export class ProductService {
 
   getAllProducts() {
     return this.http.get<Product[]>(this.path);
+  }
+
+  AddProductToCard(Product: Card) {
+    return this.http.post<Card>(
+      'https://localhost:7029/api/ShoppingCarts',
+      Product
+    );
   }
 }

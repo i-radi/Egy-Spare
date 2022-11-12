@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/_models/brand';
+import { Card } from 'src/app/_models/card';
 import { Category } from 'src/app/_models/category';
 import { Product } from 'src/app/_models/product';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { BrandService } from 'src/app/_services/brand.service';
 import { CategoryService } from 'src/app/_services/category.service';
 import { ProductService } from 'src/app/_services/product.service';
+import { ShoppingCardService } from 'src/app/_services/shopping-card.service';
 
 @Component({
   selector: 'app-view-products',
@@ -15,9 +18,11 @@ import { ProductService } from 'src/app/_services/product.service';
 export class ViewProductsComponent implements OnInit {
   constructor(
     public productService: ProductService,
-    http: HttpClient,
+    public http: HttpClient,
     public categoryService: CategoryService,
-    public brandService: BrandService
+    public brandService: BrandService,
+    public UserService: AuthenticationService,
+    public cardService: ShoppingCardService
   ) {}
 
   newProduct: Product = {
@@ -37,6 +42,7 @@ export class ViewProductsComponent implements OnInit {
   brands: Brand[] = [];
   dummyId: number = 0;
   dummyId2: number = 0;
+  card: Card = new Card('', 0, '');
   //ids: number = 0;
   save(id: any) {
     this.categoryService.getCategoryById(this.dummyId).subscribe((a) => {
@@ -57,7 +63,8 @@ export class ViewProductsComponent implements OnInit {
       console.log(this.dummyId2);
       this.productService.GetProductByBrand(this.dummyId2).subscribe((prod) => {
         this.products = prod;
-        console.log(this.products);
+        console.log(prod);
+        //console.log(this.products);
       });
     });
 
@@ -75,6 +82,20 @@ export class ViewProductsComponent implements OnInit {
     });
     this.brandService.GetAll().subscribe((a) => {
       this.brands = a;
+    });
+  }
+  // ngOnChanges() {
+  //   this.change(this.dummyId2);
+  //   console.log(this.products);
+  // }
+
+  addCard(cardId: string) {
+    console.log(cardId);
+    this.productService.GetProductById(cardId).subscribe((a) => {
+      this.card.count = a.count;
+      this.card.productId = a.id;
+      localStorage.getItem(this.card.userId);
+      console.log(a);
     });
   }
 }

@@ -9,11 +9,11 @@ import { BrandService } from 'src/app/_services/brand.service';
   styleUrls: ['./brands-create.component.css'],
 })
 export class BrandsCreateComponent implements OnInit {
-  nbrand: Brand = new Brand(0, '', '');
+  nbrand: Brand = { id: 0, name: '', imgPath: '' };
 
   constructor(public brandServices: BrandService, public router: Router) {}
   save() {
-    this.brandServices.addbrand(this.nbrand).subscribe((a) => {
+    this.brandServices.addBrand(this.nbrand).subscribe((a) => {
       console.log(a);
       this.router.navigateByUrl('/admin/brand/list');
     });
